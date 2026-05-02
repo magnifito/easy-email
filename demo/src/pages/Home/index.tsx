@@ -6,12 +6,13 @@ import templateList from '@demo/store/templateList';
 import { Button } from '@arco-design/web-react';
 import { CardItem } from './components/CardItem';
 import { Stack } from '@demo/components/Stack';
-import { history } from '@demo/utils/history';
+import { useNavigate } from 'react-router-dom';
 import { pushEvent } from '@demo/utils/pushEvent';
 import templates from '@demo/config/templates.json';
 
 export default function Home() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const list = useAppSelector('templateList');
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function Home() {
         <Button
           onClick={() => {
             pushEvent({ event: 'Create' });
-            history.push('/editor');
+            navigate('/editor');
           }}
         >
           Add

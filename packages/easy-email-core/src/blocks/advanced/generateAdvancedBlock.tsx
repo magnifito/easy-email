@@ -28,7 +28,7 @@ export function generateAdvancedBlock<T extends AdvancedBlock>(option: {
 
   return createCustomBlock<T>({
     get name() {
-      return baseBlock!.name;
+      return baseBlock.name;
     },
     type: option.type,
     validParentType: option.validParentType,

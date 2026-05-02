@@ -88,6 +88,36 @@ const RenderReactNode = React.memo(function ({
     const tagName = node.tagName.toLowerCase();
     if (tagName === 'meta') return <></>;
 
+    if (tagName === 'html' || tagName === 'body') {
+      return (
+        <>
+          {[...node.childNodes].map((n, i) => (
+            <RenderReactNode
+              selector={getChildSelector(selector, i)}
+              key={i}
+              node={n as any}
+              index={i}
+            />
+          ))}
+        </>
+      );
+    }
+
+    if (tagName === 'head') {
+      return (
+        <div style={{ display: 'none' }}>
+          {[...node.childNodes].map((n, i) => (
+            <RenderReactNode
+              selector={getChildSelector(selector, i)}
+              key={i}
+              node={n as any}
+              index={i}
+            />
+          ))}
+        </div>
+      );
+    }
+
     if (tagName === 'style') {
       return createElement(tagName, {
         key: index,
@@ -108,7 +138,7 @@ const RenderReactNode = React.memo(function ({
 
     if (attributes['contenteditable'] === 'true') {
       return createElement(tagName, {
-        key: performance.now(),
+        key: index,
         ...attributes,
         style: getStyle(node.getAttribute('style')),
         dangerouslySetInnerHTML: { __html: node.innerHTML },
@@ -152,7 +182,7 @@ function createElement(
   type: string,
   props?: React.ClassAttributes<Element> & {
     style?: {} | undefined;
-    children?: JSX.Element[] | null;
+    children?: React.ReactNode;
     key: string | number;
     tabIndex?: string;
     class?: string;

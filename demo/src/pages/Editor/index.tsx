@@ -15,7 +15,7 @@ import {
 } from '@arco-design/web-react';
 import { IconLeft } from '@arco-design/web-react/icon';
 import { useQuery } from '@demo/hooks/useQuery';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { cloneDeep } from 'lodash';
 import { Loading } from '@demo/components/loading';
 import mjml from 'mjml-browser';
@@ -35,8 +35,8 @@ import { UserStorage } from '@demo/utils/user-storage';
 import { AdvancedType, IBlockData, JsonToMjml } from 'easy-email-core';
 import { ExtensionProps, SimpleLayout } from 'easy-email-extensions';
 
-import 'easy-email-editor/lib/style.css';
-import 'easy-email-extensions/lib/style.css';
+import 'easy-email-editor/lib/easy-email-editor.css';
+import 'easy-email-extensions/lib/easy-email-extensions.css';
 import blueTheme from '@arco-themes/react-easy-email-theme/css/arco.css?inline';
 
 import enUS from '@arco-design/web-react/es/locale/en-US';
@@ -112,7 +112,7 @@ const defaultCategories: ExtensionProps['categories'] = [
 export default function Editor() {
   const { featureEnabled } = useShowCommercialEditor();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const templateData = useAppSelector('template');
   const { width } = useWindowSize();
   const compact = width > 1600;
@@ -188,7 +188,7 @@ export default function Editor() {
     async (values: IEmailTemplate) => {
       console.log(values);
     },
-    [dispatch, history, id, initialValues],
+    [dispatch, navigate, id, initialValues],
   );
 
   if (!templateData && loading) {

@@ -1,6 +1,6 @@
 import { Input } from '@arco-design/web-react';
 import React, { useEffect } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
 
 interface CellBackgroundSelectorProps {
@@ -35,7 +35,7 @@ const CellBackgroundSelector: React.FC<CellBackgroundSelectorProps> = ({
       <div>Set Background Color</div>
       <div>
         <div className='easy-email-table-operation-menu-bg-item-color'>
-          <div style={{ backgroundColor: color }}></div>
+          <div style={{ backgroundColor: color }} />
           <input
             type='color'
             value={color}
@@ -60,13 +60,13 @@ const getCellBackgroundSelectorRoot = (
   rootDom: any,
 ) => {
   const node = document.createElement('div');
+  const root = createRoot(node);
 
-  render(
+  root.render(
     <CellBackgroundSelector
       bgColorHandler={bgColorHandler}
       rootDom={rootDom}
     />,
-    node,
   );
   return node;
 };

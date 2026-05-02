@@ -10,7 +10,7 @@ const defaultData = [
     blocks: [] as {
       title: string;
       description?: React.ReactNode;
-      ExampleComponent: () => JSX.Element;
+      ExampleComponent: () => React.JSX.Element;
     }[],
   },
 ];

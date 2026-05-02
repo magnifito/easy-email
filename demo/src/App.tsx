@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Page from '@demo/components/Page';
 import store from '@demo/store';
 import '@demo/styles/common.scss';
-import { history } from './utils/history';
 import Home from '@demo/pages/Home';
 
 const Editor = React.lazy(() => import('@demo/pages/Editor'));
@@ -40,18 +39,17 @@ function App() {
             </div>
           }
         >
-          <Router history={history}>
-            <Switch>
+          <Router>
+            <Routes>
               <Route
                 path='/'
-                exact
-                component={Home}
+                element={<Home />}
               />
               <Route
                 path='/editor'
-                component={Editor}
+                element={<Editor />}
               />
-            </Switch>
+            </Routes>
           </Router>
         </Suspense>
       </Page>

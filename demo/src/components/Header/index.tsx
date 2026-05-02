@@ -1,6 +1,6 @@
 import { PageHeader, PageHeaderProps } from '@arco-design/web-react';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useNavigate } from 'react-router-dom';
 
 export interface HeaderProps extends Omit<PageHeaderProps, 'onBack'> {
   backUrl?: string;
@@ -8,12 +8,12 @@ export interface HeaderProps extends Omit<PageHeaderProps, 'onBack'> {
 }
 
 export const Header: React.FC<HeaderProps> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { backUrl } = props;
   return (
     <PageHeader
       {...props}
-      onBack={backUrl ? () => history.replace(backUrl) : undefined}
+      onBack={backUrl ? () => navigate(backUrl, { replace: true }) : undefined}
     />
   );
 };

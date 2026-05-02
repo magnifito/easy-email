@@ -77,7 +77,7 @@ export function ConditionalWrapper({
   condition,
   wrapper,
   children,
-}: ConditionalWrapperProps): JSX.Element {
+}: ConditionalWrapperProps): React.JSX.Element {
   return condition ? wrapper(children) : children;
 }
 
@@ -89,7 +89,7 @@ interface ConditionalRenderProps {
 export function ConditionalRender({
   condition,
   children,
-}: ConditionalRenderProps): JSX.Element {
+}: ConditionalRenderProps): React.JSX.Element {
   return condition ? children : null;
 }
 

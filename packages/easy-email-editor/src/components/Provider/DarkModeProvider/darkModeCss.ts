@@ -18,7 +18,7 @@ function is(...parts: string[]) { return `:is(${parts.join(', ')})`; }
 
 // Editor: white OR no background (safe inside class-scoped selectors)
 const DEFAULT_BG = is(
-  `:not([style*="background"]):not([bgcolor])`,
+  ':not([style*="background"]):not([bgcolor])',
   `[style*="${WHITE_HEX}"]`,
   `[style*="${WHITE_RGB}"]`,
   `[bgcolor="${WHITE_HEX}"]`,

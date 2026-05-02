@@ -22,8 +22,8 @@ import { JsonToMjml } from 'easy-email-core';
 import { SimpleLayout } from 'easy-email-extensions';
 
 import '@arco-themes/react-easy-email-theme/css/arco.css';
-import 'easy-email-editor/lib/style.css';
-import 'easy-email-extensions/lib/style.css';
+import 'easy-email-editor/lib/easy-email-editor.css';
+import 'easy-email-extensions/lib/easy-email-extensions.css';
 
 import enUS from '@arco-design/web-react/es/locale/en-US';
 import { useRouter, useSearchParams } from 'next/navigation';

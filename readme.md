@@ -14,7 +14,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   <a aria-label="React version" href="https://react.js">
-    <img alt="" src="https://img.shields.io/badge/React-18.2-yellow.svg">
+    <img alt="" src="https://img.shields.io/badge/React-19.0-blue.svg">
   </a>
   <a aria-label="MJML" href="https://mjml.io/">
     <img src="https://img.shields.io/badge/MJML-awesome-rgb(120 33 117).svg">
@@ -59,8 +59,8 @@ import { BlockManager, BasicType, AdvancedType } from 'easy-email-core';
 import { EmailEditor, EmailEditorProvider } from 'easy-email-editor';
 import { ExtensionProps, SimpleLayout } from 'easy-email-extensions';
 
-import 'easy-email-editor/lib/style.css';
-import 'easy-email-extensions/lib/style.css';
+import 'easy-email-editor/lib/easy-email-editor.css';
+import 'easy-email-extensions/lib/easy-email-extensions.css';
 import '@arco-themes/react-easy-email-theme/css/arco.css';
 
 const initialValues = {
@@ -112,7 +112,7 @@ export default function App() {
 | Feature                   | Open Source Version  | Pro Version                                                               |
 | ------------------------- | -------------------- | ------------------------------------------------------------------------- |
 | **Browser Compatibility** | Only supports Chrome | Compatible with various browsers (uses iframe)                            |
-| **React 19 Support**      | ❌ Not supported     | ✅ Supported                                                              |
+| **React 19 Support**      | ✅ Supported        | ✅ Supported                                                              |
 | **Responsive Design**     | ❌ Not available     | ✅ Supports different UI for desktop and mobile                           |
 | **AMP block**             | ❌ Not available	   | ✅ Accordion, Carousel, Form, Product, Reviews, Lucky Wheel               |
 | **Migration**             | ❌ Not available     | ✅ Seamless migration from [Unlayer](https://github.com/unlayer/react-email-editor) templates |

@@ -3,6 +3,9 @@ import Head from 'next/head';
 import './globals.css';
 import { useEffect } from 'react';
 import Script from 'next/script';
+import '@arco-design/web-react/lib/_util/react-19-adapter';
+import '@arco-themes/react-easy-email-theme/css/arco.css';
+
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     import('@/utils/posthog').then(d => d.posthog).then(posthog => { });

@@ -6,6 +6,7 @@ const nextConfig = {
       ...config.resolve.alias,
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
+      '@arco-design/web-react/es/_util/react-dom': path.resolve('./node_modules/@arco-design/web-react/es/_util/react-dom.js'),
     };
     return config;
   },

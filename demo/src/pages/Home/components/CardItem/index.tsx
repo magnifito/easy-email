@@ -4,7 +4,7 @@ import { IconEdit, IconDelete } from '@arco-design/web-react/icon';
 import dayjs from 'dayjs';
 import styles from './index.module.scss';
 import { Popconfirm } from '@arco-design/web-react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import template from '@demo/store/template';
 import { useDispatch } from 'react-redux';
 import templateList from '@demo/store/templateList';
@@ -19,7 +19,7 @@ interface CardItemProps {
 export function CardItem(props: CardItemProps) {
   const { data } = props;
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const loading = useLoading([
     getLoadingByKey(template.loadings.duplicate, data.article_id),
@@ -46,12 +46,12 @@ export function CardItem(props: CardItemProps) {
           article: data,
           _actionKey: data.article_id,
           success(id) {
-            history.push(`/editor?id=${id}`);
+            navigate(`/editor?id=${id}`);
           },
         })
       );
     },
-    [data, dispatch, history]
+    [data, dispatch, navigate]
   );
 
   return (
