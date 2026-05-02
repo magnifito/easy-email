@@ -14,8 +14,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@extensions': path.resolve('./src'),
-      '@puralex/easy-email-core': path.resolve('../ @puralex/easy-email-core/lib'),
-      '@puralex/easy-email-editor': path.resolve('../ @puralex/easy-email-editor/lib'),
+      '@puralex/easy-email-core': path.resolve('../easy-email-core/lib'),
+      '@puralex/easy-email-editor': path.resolve('../easy-email-editor/lib'),
     },
   },
   define: {},
