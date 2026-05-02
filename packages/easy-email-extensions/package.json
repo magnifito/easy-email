@@ -95,8 +95,8 @@
     "uuid": "^9.0.1"
   },
   "peerDependencies": {
-    "@puralex/easy-email-core": "^4.17.0",
-    "@puralex/easy-email-editor": "^4.17.0",
+    "@puralex/easy-email-core": "workspace:*",
+    "@puralex/easy-email-editor": "workspace:*",
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0",
     "react-final-form": "^6.5.7"

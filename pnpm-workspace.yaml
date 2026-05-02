@@ -1,0 +1,4 @@
+packages:
+  - 'packages/*'
+  - 'demo'
+  - 'simple-nextjs-demo'

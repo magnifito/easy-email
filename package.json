@@ -3,7 +3,7 @@
   "scripts": {
     "install-all": "lerna exec -- pnpm install && cd demo && pnpm install",
     "vercel-install": "lerna exec -- pnpm install && cd demo && pnpm install",
-    "build": "pnpm -r --filter \"@puralex/*\" run build --if-present",
+    "build": "pnpm -r --filter \"@puralex/*\" --if-present run build",
     "dev": "cd demo && pnpm run dev",
     "demo": "cd demo && pnpm run build",
     "demo2": "cd nextjs-demo && pnpm run build",
@@ -28,6 +28,7 @@
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.8.4",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "rimraf": "^6.1.3"
   }
 }
