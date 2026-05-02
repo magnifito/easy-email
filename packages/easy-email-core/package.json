@@ -45,7 +45,7 @@
     "@types/js-beautify": "^1.13.3",
     "@types/jsdom": "^16.2.13",
     "@types/lodash": "^4.14.178",
-    "@types/node": "^16.11.7",
+    "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/uuid": "^8.3.4",
