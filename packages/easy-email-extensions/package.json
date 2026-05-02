@@ -1,5 +1,5 @@
 {
-  "name": "easy-email-extensions",
+  "name": "@puralex/easy-email-extensions",
   "license": "MIT",
   "description": "Email editor",
   "version": "4.16.5",
@@ -95,11 +95,14 @@
     "uuid": "^9.0.1"
   },
   "peerDependencies": {
-    "easy-email-core": "^4.3.6",
-    "easy-email-editor": "^4.3.6",
+    "@puralex/easy-email-core": "^4.3.6",
+    "@puralex/easy-email-editor": "^4.3.6",
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0",
     "react-final-form": "^6.5.7"
   },
-  "gitHead": "bb5757eb3146f55c31d4354f1480939c3af8efe1"
+  "gitHead": "bb5757eb3146f55c31d4354f1480939c3af8efe1",
+  "publishConfig": {
+    "access": "public"
+  }
 }

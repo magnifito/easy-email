@@ -9,7 +9,7 @@ import {
   getParentByIdx,
   BasicType,
   AdvancedType,
-} from 'easy-email-core';
+} from '@puralex/easy-email-core';
 import { DirectionPosition } from './getDirectionPosition';
 
 interface Params {

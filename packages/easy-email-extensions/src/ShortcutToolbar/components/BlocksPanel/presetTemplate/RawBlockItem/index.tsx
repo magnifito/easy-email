@@ -1,6 +1,6 @@
 import React from 'react';
-import { Stack } from 'easy-email-editor';
-import { BasicType } from 'easy-email-core';
+import { Stack } from '@puralex/easy-email-editor';
+import { BasicType } from '@puralex/easy-email-core';
 
 import { BlockMaskWrapper } from '@extensions/ShortcutToolbar/components/BlockMaskWrapper';
 

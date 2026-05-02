@@ -14,8 +14,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@extensions': path.resolve('./src'),
-      'easy-email-core': path.resolve('../easy-email-core/lib'),
-      'easy-email-editor': path.resolve('../easy-email-editor/lib'),
+      '@puralex/easy-email-core': path.resolve('../ @puralex/easy-email-core/lib'),
+      '@puralex/easy-email-editor': path.resolve('../ @puralex/easy-email-editor/lib'),
     },
   },
   define: {},
@@ -39,8 +39,8 @@ export default defineConfig({
         'react-dom/server',
         'mjml-browser',
         'react-final-form',
-        'easy-email-core',
-        'easy-email-editor',
+        '@puralex/easy-email-core',
+        '@puralex/easy-email-editor',
         'uuid',
         '@arco-design/web-react',
         'codemirror',

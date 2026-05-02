@@ -26,17 +26,17 @@ import {
   EmailEditor,
   EmailEditorProvider,
   IEmailTemplate,
-} from 'easy-email-editor';
+} from '@puralex/easy-email-editor';
 
 import { Stack } from '@demo/components/Stack';
 import { pushEvent } from '@demo/utils/pushEvent';
 import { UserStorage } from '@demo/utils/user-storage';
 
-import { AdvancedType, IBlockData, JsonToMjml } from 'easy-email-core';
-import { ExtensionProps, SimpleLayout } from 'easy-email-extensions';
+import { AdvancedType, IBlockData, JsonToMjml } from '@puralex/easy-email-core';
+import { ExtensionProps, SimpleLayout } from '@puralex/easy-email-extensions';
 
-import 'easy-email-editor/lib/easy-email-editor.css';
-import 'easy-email-extensions/lib/easy-email-extensions.css';
+import '@puralex/easy-email-editor/lib/easy-email-editor.css';
+import '@puralex/easy-email-extensions/lib/easy-email-extensions.css';
 import blueTheme from '@arco-themes/react-easy-email-theme/css/arco.css?inline';
 
 import enUS from '@arco-design/web-react/es/locale/en-US';

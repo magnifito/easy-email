@@ -11,23 +11,23 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'easy-email-editor/lib/easy-email-editor.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
-      'easy-email-extensions/lib/easy-email-extensions.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
+      '@puralex/easy-email-editor/lib/easy-email-editor.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
+      '@puralex/easy-email-extensions/lib/easy-email-extensions.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
       react: path.resolve('./node_modules/react'),
       'react-final-form': path.resolve(__dirname, './node_modules/react-final-form'),
       '@demo': path.resolve(__dirname, './src'),
-      '@extensions': path.resolve('../packages/easy-email-extensions/src'),
-      '@core': path.resolve('../packages/easy-email-core/src'),
+      '@extensions': path.resolve('../packages/ @puralex/easy-email-extensions/src'),
+      '@core': path.resolve('../packages/ @puralex/easy-email-core/src'),
       '@arco-themes': path.resolve('./node_modules/@arco-themes'),
-      '@': path.resolve('../packages/easy-email-editor/src'),
-      'easy-email-core': path.resolve('../packages/easy-email-core/src/index.tsx'),
-      'easy-email-editor/lib/locales.json': path.resolve(
-        '../packages/easy-email-editor/public/locales.json',
+      '@': path.resolve('../packages/ @puralex/easy-email-editor/src'),
+      '@puralex/easy-email-core': path.resolve('../packages/ @puralex/easy-email-core/src/index.tsx'),
+      '@puralex/easy-email-editor/lib/locales.json': path.resolve(
+        '../packages/ @puralex/easy-email-editor/public/locales.json',
       ),
-      'easy-email-localization': path.resolve('../packages/easy-email-localization'),
-      'easy-email-editor': path.resolve('../packages/easy-email-editor/src/index.tsx'),
-      'easy-email-extensions': path.resolve(
-        '../packages/easy-email-extensions/src/index.tsx',
+      '@puralex/easy-email-localization': path.resolve('../packages/easy-email-localization'),
+      '@puralex/easy-email-editor': path.resolve('../packages/ @puralex/easy-email-editor/src/index.tsx'),
+      '@puralex/easy-email-extensions': path.resolve(
+        '../packages/ @puralex/easy-email-extensions/src/index.tsx',
       ),
       '@arco-design/web-react/dist/css/arco.css': path.resolve(
         './node_modules/@arco-design/web-react/dist/css/arco.css',
@@ -57,7 +57,7 @@ export default defineConfig({
             return 'mjml-browser';
           }
           if (/easy-email.*/.test(id)) {
-            return 'easy-email-editor';
+            return '@puralex/easy-email-editor';
           }
         },
       },

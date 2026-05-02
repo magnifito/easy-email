@@ -1,6 +1,6 @@
 import React from 'react';
-import { AdvancedType } from 'easy-email-core';
-import { Stack, TextStyle } from 'easy-email-editor';
+import { AdvancedType } from '@puralex/easy-email-core';
+import { Stack, TextStyle } from '@puralex/easy-email-editor';
 
 import { TextBlockItem } from './TextBlockItem';
 import { ImageBlockItem } from './ImageBlockItem';
