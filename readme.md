@@ -55,9 +55,9 @@ $ npm install --save easy-email-core easy-email-editor easy-email-extensions rea
 
 ```js
 import React from 'react';
-import { BlockManager, BasicType, AdvancedType } from 'easy-email-core';
-import { EmailEditor, EmailEditorProvider } from 'easy-email-editor';
-import { ExtensionProps, SimpleLayout } from 'easy-email-extensions';
+import { BlockManager, BasicType, AdvancedType } from '@puralex/easy-email-core';
+import { EmailEditor, EmailEditorProvider } from '@puralex/easy-email-editor';
+import { ExtensionProps, SimpleLayout } from '@puralex/easy-email-extensions';
 
 import 'easy-email-editor/lib/easy-email-editor.css';
 import 'easy-email-extensions/lib/easy-email-extensions.css';

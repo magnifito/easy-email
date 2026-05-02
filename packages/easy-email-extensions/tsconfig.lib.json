@@ -9,10 +9,10 @@
       "@extensions/*": [
         "./src/*"
       ],
-      "easy-email-core": [
+      "@puralex/easy-email-core": [
         "../easy-email-core"
       ],
-      "easy-email-editor": [
+      "@puralex/easy-email-editor": [
         "../easy-email-editor"
       ]
     }

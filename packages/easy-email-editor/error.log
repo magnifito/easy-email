@@ -1,0 +1,23 @@
+src/components/EmailEditor/components/DesktopEmailPreview/index.tsx(80,27): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/components/EmailEditor/components/DesktopEmailPreview/index.tsx(80,33): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/EmailEditor/components/EditEmailPreview/components/MjmlDomRender.tsx(3,47): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/components/Provider/BlocksProvider/index.tsx(3,28): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/components/Provider/LanguageProvider/index.tsx(2,32): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/components/Provider/PreviewEmailProvider/index.tsx(5,28): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/components/Provider/PropsProvider/index.tsx(1,28): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/components/wrapper/BlockAvatarWrapper/index.tsx(2,40): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/hooks/useBlock.ts(11,8): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/hooks/useBlock.ts(74,38): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/hooks/useBlock.ts(138,38): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/hooks/useDropBlock.ts(3,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/hooks/useHotKeys.ts(7,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/typings/index.ts(1,23): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/getBlockNodeByIdx.ts(1,37): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/getImg.ts(1,30): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/getInsertPosition.ts(12,8): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/HtmlStringToPreviewReactNodes.tsx(3,42): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/HtmlStringToReactNodes.tsx(6,8): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/isButtonBlock.ts(1,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/isNavbarBlock.ts(1,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/isTableBlock.ts(1,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.
+src/utils/isTextBlock.ts(1,41): error TS2307: Cannot find module '@puralex/easy-email-core' or its corresponding type declarations.

@@ -3,7 +3,7 @@
   "scripts": {
     "install-all": "lerna exec -- pnpm install && cd demo && pnpm install",
     "vercel-install": "lerna exec -- pnpm install && cd demo && pnpm install",
-    "build": "pnpm -r --filter ./packages/** run build --if-present",
+    "build": "pnpm -r --filter \"@puralex/*\" run build --if-present",
     "dev": "cd demo && pnpm run dev",
     "demo": "cd demo && pnpm run build",
     "demo2": "cd nextjs-demo && pnpm run build",

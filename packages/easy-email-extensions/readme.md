@@ -14,9 +14,9 @@ $ yarn add easy-email-extensions
 
 ```js
 import React from 'react';
-import { BlockManager, BasicType, AdvancedType } from 'easy-email-core';
-import { EmailEditor, EmailEditorProvider } from 'easy-email-editor';
-import { ExtensionProps, StandardLayout } from 'easy-email-extensions';
+import { BlockManager, BasicType, AdvancedType } from '@puralex/easy-email-core';
+import { EmailEditor, EmailEditorProvider } from '@puralex/easy-email-editor';
+import { ExtensionProps, StandardLayout } from '@puralex/easy-email-extensions';
 
 import 'easy-email-editor/lib/style.css';
 import 'easy-email-extensions/lib/style.css';
