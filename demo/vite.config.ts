@@ -35,9 +35,6 @@ export default defineConfig({
     },
   },
 
-  optimizeDeps: {
-    exclude: ['mjml-browser'],
-  },
   define: {},
   esbuild: {
     jsxInject: 'import "@arco-design/web-react/dist/css/arco.css";',
