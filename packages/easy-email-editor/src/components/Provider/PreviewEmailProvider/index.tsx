@@ -50,56 +50,61 @@ export const PreviewEmailProvider: React.FC<{ children?: React.ReactNode; }> = p
   }, [mergeTags, previewInjectData]);
 
   useEffect(() => {
-    const breakpoint = parseInt(lazyPageData.data.value.breakpoint || '0');
-    let adjustBreakPoint = breakpoint;
-    if (breakpoint > 360) {
-      adjustBreakPoint = Math.max(mobileWidth + 1, breakpoint);
-    }
-    const cloneData = {
-      ...lazyPageData,
-      data: {
-        ...lazyPageData.data,
-        value: {
-          ...lazyPageData.data.value,
-          breakpoint: adjustBreakPoint + 'px',
-          'text-color':
-            isDarkMode && lazyPageData.data.value['text-color'] === LIGHT_TEXT_COLOR
-              ? DARK_TEXT_COLOR
-              : lazyPageData.data.value['text-color'],
-        },
-      },
-    };
-    let parseHtml = mjml(
-      JsonToMjml({
-        data: cloneData,
-        mode: 'production',
-        context: cloneData,
-        dataSource: cloneDeep(injectData),
-      }),
-    ).html;
-
-    parseHtml = parseHtml.replace('</head>', PREVIEW_BASE_CSS + (isDarkMode ? DARK_EMAIL_CSS : '') + '</head>');
-
-    if (onBeforePreview) {
-      try {
-        const result = onBeforePreview(parseHtml, injectData);
-        if (isString(result)) {
-          parseHtml = result;
-          setHtml(parseHtml);
-        } else {
-          result.then(resHtml => {
-            parseHtml = resHtml;
-            setHtml(parseHtml);
-          });
-        }
-
-        setErrMsg('');
-      } catch (error: any) {
-        setErrMsg(error?.message || error);
+    (async () => {
+      const breakpoint = parseInt(lazyPageData.data.value.breakpoint || '0');
+      let adjustBreakPoint = breakpoint;
+      if (breakpoint > 360) {
+        adjustBreakPoint = Math.max(mobileWidth + 1, breakpoint);
       }
-    } else {
-      setHtml(parseHtml);
-    }
+      const cloneData = {
+        ...lazyPageData,
+        data: {
+          ...lazyPageData.data,
+          value: {
+            ...lazyPageData.data.value,
+            breakpoint: adjustBreakPoint + 'px',
+            'text-color':
+              isDarkMode && lazyPageData.data.value['text-color'] === LIGHT_TEXT_COLOR
+                ? DARK_TEXT_COLOR
+                : lazyPageData.data.value['text-color'],
+          },
+        },
+      };
+
+      const result = mjml(
+        JsonToMjml({
+          data: cloneData,
+          mode: 'production',
+          context: cloneData,
+          dataSource: cloneDeep(injectData),
+        }),
+      );
+
+      let parseHtml = (result instanceof Promise ? await result : result).html;
+
+      parseHtml = parseHtml.replace('</head>', PREVIEW_BASE_CSS + (isDarkMode ? DARK_EMAIL_CSS : '') + '</head>');
+
+      if (onBeforePreview) {
+        try {
+          const result = onBeforePreview(parseHtml, injectData);
+          if (isString(result)) {
+            parseHtml = result;
+            setHtml(parseHtml);
+          } else {
+            result.then(resHtml => {
+              parseHtml = resHtml;
+              setHtml(parseHtml);
+            });
+          }
+
+          setErrMsg('');
+        } catch (error: any) {
+          setErrMsg(error?.message || error);
+        }
+      } else {
+        setHtml(parseHtml);
+      }
+    })();
 
     return () => {
       setHtml('');

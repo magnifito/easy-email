@@ -2,8 +2,8 @@ import { BlockManager,IPage, BasicType, IBlockData } from '@puralex/easy-email-c
 import { identity, isString, pickBy } from 'lodash';
 import { parseXMLtoBlock } from './parseXMLtoBlock';
 
-export function MjmlToJson(data: MjmlBlockItem | string): IPage {
-  if (isString(data)) return parseXMLtoBlock(data);
+export async function MjmlToJson(data: MjmlBlockItem | string): Promise<IPage> {
+  if (isString(data)) return await parseXMLtoBlock(data);
 
   const transform = (item: IChildrenItem): IBlockData => {
     const attributes = item.attributes as any;

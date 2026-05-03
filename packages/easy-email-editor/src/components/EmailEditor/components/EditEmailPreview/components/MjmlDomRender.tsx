@@ -72,8 +72,10 @@ export function MjmlDomRender() {
     };
   }, []);
 
-  const html = useMemo(() => {
-    if (!pageData) return '';
+  const [renderHtml, setRenderHtml] = useState('');
+
+  useEffect(() => {
+    if (!pageData) return;
 
     const renderPageData =
       isDarkMode && pageData.data.value['text-color'] === LIGHT_TEXT_COLOR
@@ -89,17 +91,22 @@ export function MjmlDomRender() {
           }
         : pageData;
 
-    const renderHtml = mjml(
-      JsonToMjml({
-        data: renderPageData,
-        idx: getPageIdx(),
-        context: renderPageData,
-        mode: 'testing',
-        dataSource: cloneDeep(mergeTags),
-      }),
-    ).html;
-    return renderHtml;
+    (async () => {
+      const result = mjml(
+        JsonToMjml({
+          data: renderPageData,
+          idx: getPageIdx(),
+          context: renderPageData,
+          mode: 'testing',
+          dataSource: cloneDeep(mergeTags),
+        }),
+      );
+      const res = (result instanceof Promise ? await result : result).html;
+      setRenderHtml(res);
+    })();
   }, [isDarkMode, mergeTags, pageData]);
+
+  const html = renderHtml;
 
   return useMemo(() => {
     return (

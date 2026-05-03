@@ -3,16 +3,17 @@ import { IBlockData, BlockType, BasicType, BlockManager } from '@puralex/easy-em
 import { MjmlToJson } from './MjmlToJson';
 
 const domParser = new DOMParser();
-export function parseXMLtoBlock(text: string) {
+export async function parseXMLtoBlock(text: string) {
   const dom = domParser.parseFromString(text, 'text/xml');
   const root = dom.firstChild as Element;
   if (!(dom.firstChild instanceof Element)) {
     throw new Error('Invalid content');
   }
   if (root.tagName === 'mjml') {
-    const { json } = mjml(text, {
+    const result = mjml(text, {
       validationLevel: 'soft',
     });
+    const { json } = (result instanceof Promise ? await result : result);
     const parseValue = MjmlToJson(json);
     return parseValue;
   }
