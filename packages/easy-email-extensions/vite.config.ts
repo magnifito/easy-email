@@ -34,8 +34,16 @@ export default defineConfig({
     rollupOptions: {
       plugins: [],
       external: [
+        // Externalize react & react-dom plus ALL their subpaths (jsx-runtime,
+        // react-dom/client, react-dom/server, ...). Rollup string entries are
+        // exact-match only, so a bare 'react-dom' does NOT cover 'react-dom/client'.
+        // Missing that subpath bundles the full react-dom dev build into the lib,
+        // which then throws "Incompatible React versions" against the host's react.
+        /^react($|\/)/,
+        /^react-dom($|\/)/,
         'react',
         'react-dom',
+        'react-dom/client',
         'react-dom/server',
         'mjml-browser',
         'react-final-form',
