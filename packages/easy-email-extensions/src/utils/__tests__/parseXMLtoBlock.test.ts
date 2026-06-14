@@ -84,15 +84,13 @@ const mjmlText = `
 
 `;
 describe('Test parseXml', () => {
-  const instance = parseXMLtoBlock(mjmlText);
-
-  it('should render  as expected', () => {
-    expect(instance).toMatchSnapshot();
+  it('should render  as expected', async () => {
+    expect(await parseXMLtoBlock(mjmlText)).toMatchSnapshot();
   });
 
-  it('should render  as expected', () => {
+  it('should render  as expected', async () => {
     expect(
-      parseXMLtoBlock(`
+      await parseXMLtoBlock(`
     <mj-text font-size="13px" padding="0px 0px 0px 0px" line-height="1" align="left">
      <div style="color:#fff;">Make it easy for everyone to compose emails!</div>
     </mj-text>
@@ -100,19 +98,19 @@ describe('Test parseXml', () => {
     ).toMatchSnapshot();
   });
 
-  it('should throw error when xml is unexpected', () => {
-    expect(() => parseXMLtoBlock('<mj-button><mj-button>')).toThrowError(
+  it('should throw error when xml is unexpected', async () => {
+    await expect(
+      parseXMLtoBlock('<mj-button><mj-button>')
+    ).rejects.toThrow('Invalid content');
+    await expect(parseXMLtoBlock('<html></html>')).rejects.toThrow(
       'Invalid content'
     );
-    expect(() => parseXMLtoBlock('<html></html>')).toThrowError(
-      'Invalid content'
-    );
-    expect(() =>
+    await expect(
       parseXMLtoBlock(`
     <mj-button font-size="13px" padding="0px 0px 0px 0px" line-height="1" align="left">
      <div style="color:#fff;">Make it easy for everyone to compose emails!</div>
     </mj-button>
   `)
-    ).toThrowError('Invalid content');
+    ).rejects.toThrow('Invalid content');
   });
 });
