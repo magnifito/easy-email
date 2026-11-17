@@ -14,7 +14,8 @@ const core = editorRequire('@puralex/easy-email-core');
 function loadSource(file, mocks, timers) {
   const source = readFileSync(path.join(root, file), 'utf8');
   const compiled = ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS },
+    fileName: file,
+    compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.React },
   }).outputText;
   const context = {
     exports: {},
@@ -100,5 +101,48 @@ for (const present of [true, false]) {
     assert.equal(selected, 'content.children.[1]');
     assert.equal(options?.block, present ? 'nearest' : undefined);
     assert.equal(options?.behavior, present ? 'auto' : undefined);
+  });
+}
+
+for (const state of ['no shadow root', 'no shadow body', 'body ready']) {
+  test(`table controls: ${state}`, () => {
+    const body = state === 'body ready' ? {} : null;
+    const shadowRoot = state === 'no shadow root' ? null : { querySelector: () => body };
+    const effects = [];
+    const containers = [];
+    let constructed = 0;
+    let destroyed = 0;
+    const react = { createElement: (type, props, ...children) => ({ type, props, children }), Fragment: Symbol() };
+    const { TableOperation } = loadSource(
+      'packages/easy-email-extensions/src/features/attribute-panel/components/advanced-table-operation/index.tsx',
+      {
+        lodash,
+        react: { default: react, useRef: value => ({ current: value }), useEffect: fn => effects.push(fn) },
+        'react-dom': { createPortal: (element, container) => {
+          assert(container, 'portal container must exist');
+          containers.push(container);
+          return element;
+        } },
+        './tableTool': { default: class {
+          constructor(_borders, container) {
+            assert.equal(container, body);
+            constructed++;
+          }
+          destroy() { destroyed++; }
+        } },
+        '@puralex/easy-email-editor': {
+          getShadowRoot: () => shadowRoot,
+          useFocusIdx: () => ({ focusIdx: 'content' }),
+          useBlock: () => ({ focusBlock: null, change: () => {} }),
+        },
+      },
+      []
+    );
+    assert.doesNotThrow(() => TableOperation());
+    const cleanups = effects.map(effect => effect());
+    assert.equal(containers.length, body ? 1 : 0);
+    assert.equal(constructed, body ? 1 : 0);
+    cleanups.forEach(cleanup => cleanup?.());
+    assert.equal(destroyed, body ? 1 : 0);
   });
 }

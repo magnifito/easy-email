@@ -6,6 +6,7 @@ import { getShadowRoot, useBlock, useFocusIdx } from '@puralex/easy-email-editor
 
 export function TableOperation() {
   const shadowRoot = getShadowRoot();
+  const body = shadowRoot?.querySelector('body') ?? null;
   const { focusIdx } = useFocusIdx();
   const { focusBlock, change } = useBlock();
   const topRef = useRef(null);
@@ -15,6 +16,8 @@ export function TableOperation() {
   const tool = useRef<TableColumnTool | null>(null);
 
   useEffect(() => {
+    if (!body) return;
+
     const borderTool: any = {
       top: topRef.current,
       bottom: bottomRef.current,
@@ -23,12 +26,12 @@ export function TableOperation() {
     };
     tool.current = new TableColumnTool(
       borderTool,
-      shadowRoot.querySelector('body') as any,
+      body,
     );
     return () => {
       tool.current?.destroy();
     };
-  }, []);
+  }, [body]);
 
   useEffect(() => {
     if (tool.current) {
@@ -41,7 +44,7 @@ export function TableOperation() {
 
   return (
     <>
-      {shadowRoot &&
+      {body &&
         createPortal(
           <>
             <div>
@@ -51,7 +54,7 @@ export function TableOperation() {
               <div ref={rightRef} />
             </div>
           </>,
-          shadowRoot.querySelector('body') as any,
+          body,
         )}
     </>
   );
