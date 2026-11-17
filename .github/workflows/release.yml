@@ -28,6 +28,9 @@ jobs:
         
       - name: Build
         run: pnpm run build
+
+      - name: Check React runtime externalization
+        run: pnpm run check:react-bundles
         
       - name: Publish
         run: pnpm -r publish --access public --no-git-checks

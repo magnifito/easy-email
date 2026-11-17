@@ -10,6 +10,7 @@
     "test": "pnpm run test:core && pnpm run test:extensions",
     "test:core": "cd packages/easy-email-core && pnpm run test",
     "test:extensions": "cd packages/easy-email-extensions && pnpm run test",
+    "check:react-bundles": "node scripts/check-react-bundles.mjs",
     "translate": "ts-node scripts/translate.ts",
     "lint": "lerna exec -- pnpm run format"
   },

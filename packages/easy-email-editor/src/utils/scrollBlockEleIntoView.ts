@@ -4,8 +4,8 @@ export function scrollBlockEleIntoView({ idx }: { idx: string }) {
   setTimeout(() => {
     const editBlock = getBlockNodeByIdx(idx);
     editBlock?.scrollIntoView({
-      block: 'center',
-      behavior: 'smooth',
+      block: 'nearest',
+      behavior: 'auto',
     });
   }, 50);
 }
