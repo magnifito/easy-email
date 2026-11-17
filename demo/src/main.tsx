@@ -1,4 +1,5 @@
 import React from 'react';
+import '@arco-design/web-react/dist/css/arco.css';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import * as Sentry from '@sentry/browser';

@@ -17,13 +17,13 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "@demo": ["src"],
       "@demo/*": ["src/*"],
-      "easy-email-localization/*": ["../packages/easy-email-localization/*"],
-      "easy-email-editor/lib/locales.json": [
+      "@puralex/easy-email-localization/*": ["../packages/easy-email-localization/*"],
+      "@puralex/easy-email-editor/lib/locales.json": [
         "../packages/easy-email-editor/lib/locales.json"
       ],
       "@puralex/easy-email-editor": ["../packages/easy-email-editor/src/index.tsx"],

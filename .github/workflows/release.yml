@@ -24,15 +24,18 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         
       - name: Build
         run: pnpm run build
 
       - name: Check React runtime externalization
         run: pnpm run check:react-bundles
+
+      - name: Test packages
+        run: pnpm test
         
       - name: Publish
-        run: pnpm -r publish --access public --no-git-checks
+        run: pnpm --filter '@puralex/*' -r publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

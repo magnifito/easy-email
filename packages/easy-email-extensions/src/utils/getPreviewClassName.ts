@@ -1,8 +1,1 @@
-import { classnames } from '@extensions/AttributePanel/utils/classnames';
-import { getNodeIdxClassName, getNodeTypeClassName } from '@puralex/easy-email-core';
-
-export function getPreviewClassName(idx: string | null, type: string) {
-  return classnames('email-block',
-    idx && getNodeIdxClassName(idx),
-    getNodeTypeClassName(type));
-}
+export * from '../shared/utils/getPreviewClassName';

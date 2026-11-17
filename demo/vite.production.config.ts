@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import styleImport from 'vite-plugin-style-import';
 import path from 'path';
 import { injectHtml } from 'vite-plugin-html';
 
@@ -7,12 +6,18 @@ export default defineConfig({
   resolve: {
     alias: {
       '@demo': path.resolve(__dirname, './src'),
-      react: path.resolve('./node_modules/react'),
+      react: path.resolve(__dirname, './node_modules/react'),
       'react-final-form': path.resolve(__dirname, './node_modules/react-final-form'),
-      '@puralex/easy-email-localization': path.resolve('../packages/easy-email-localization'),
-      '@puralex/easy-email-core': path.resolve('../packages/easy-email-core'),
-      '@puralex/easy-email-editor': path.resolve('../packages/easy-email-editor'),
-      '@puralex/easy-email-extensions': path.resolve('../packages/easy-email-extensions'),
+      '@puralex/easy-email-localization': path.resolve(
+        __dirname,
+        '../packages/easy-email-localization',
+      ),
+      '@puralex/easy-email-core': path.resolve(__dirname, '../packages/easy-email-core'),
+      '@puralex/easy-email-editor': path.resolve(__dirname, '../packages/easy-email-editor'),
+      '@puralex/easy-email-extensions': path.resolve(
+        __dirname,
+        '../packages/easy-email-extensions',
+      ),
     },
   },
   optimizeDeps: {},
@@ -25,9 +30,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (/\/node_modules\/html2canvas\/.*/.test(id)) {
-            return 'html2canvas';
-          }
           if (/\/node_modules\/lodash\/.*/.test(id)) {
             return 'lodash';
           }
@@ -36,11 +38,7 @@ export default defineConfig({
           }
         },
         chunkFileNames(info) {
-          if (
-            ['mjml-browser', 'html2canvas', 'browser-image-compression'].some(name =>
-              info.name?.includes(name),
-            )
-          ) {
+          if (info.name?.includes('mjml-browser')) {
             return '[name].js';
           }
           return '[name]-[hash].js';
@@ -60,23 +58,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    // styleImport({
-    //   libs: [
-    //     // Dynamic import @arco-design styles
-    //     {
-    //       libraryName: '@arco-design/web-react',
-    //       libraryNameChangeCase: 'pascalCase',
-    //       esModule: true,
-    //       resolveStyle: name => `@arco-design/web-react/es/${name}/style/index`,
-    //     },
-    //     {
-    //       libraryName: '@arco-design/web-react/icon',
-    //       libraryNameChangeCase: 'pascalCase',
-    //       resolveStyle: name => `@arco-design/web-react/icon/react-icon/${name}`,
-    //       resolveComponent: name => `@arco-design/web-react/icon/react-icon/${name}`,
-    //     },
-    //   ],
-    // }),
     injectHtml({
       data: {
         buildTime: `<meta name="updated-time" content="${new Date().toUTCString()}" />`,

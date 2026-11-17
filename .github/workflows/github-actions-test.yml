@@ -5,35 +5,20 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+          version: 10
+      - uses: actions/setup-node@v4
         with:
-          version: 8
-          run_install: false
-
-      - name: Install dependencies core
-        run: |
-          cd packages/easy-email-core && pnpm install
-
-      - name: Run tests core
-        run: pnpm run test:core
-
-      - name: Install dependencies extensions
-        run: |
-          cd packages/easy-email-extensions && pnpm install
-
-      - name: Run tests extensions
-        run: pnpm run test:extensions
+          node-version: 20
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build packages
+        run: pnpm run build
+      - name: Test packages
+        run: pnpm test
+      - name: Check React runtime externalization
+        run: pnpm run check:react-bundles

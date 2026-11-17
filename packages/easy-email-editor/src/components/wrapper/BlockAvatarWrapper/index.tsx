@@ -63,6 +63,7 @@ export const BlockAvatarWrapper: React.FC<BlockAvatarWrapperProps> = props => {
         moveBlock(
           dataTransfer.sourceIdx,
           getChildIdx(dataTransfer.parentIdx, dataTransfer.positionIndex),
+          { destinationIsInsertion: true },
         );
       }
     }

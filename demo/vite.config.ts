@@ -11,8 +11,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@puralex/easy-email-editor/lib/easy-email-editor.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
-      '@puralex/easy-email-extensions/lib/easy-email-extensions.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
+      '@puralex/easy-email-editor/lib/style.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
+      '@puralex/easy-email-extensions/lib/style.css': path.resolve(__dirname, 'package.json'), // 没有用的，只是防止css 404报错
       react: path.resolve('./node_modules/react'),
       'react-final-form': path.resolve(__dirname, './node_modules/react-final-form'),
       '@demo': path.resolve(__dirname, './src'),
@@ -47,9 +47,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (/\/node_modules\/html2canvas\/.*/.test(id)) {
-            return 'html2canvas';
-          }
           if (/\/node_modules\/lodash\/.*/.test(id)) {
             return 'lodash';
           }

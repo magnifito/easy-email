@@ -7,9 +7,10 @@
     "dev": "cd demo && pnpm run dev",
     "demo": "cd demo && pnpm run build",
     "demo2": "cd nextjs-demo && pnpm run build",
-    "test": "pnpm run test:core && pnpm run test:extensions",
+    "test": "pnpm run test:core && pnpm run test:extensions && pnpm run test:editor",
     "test:core": "cd packages/easy-email-core && pnpm run test",
     "test:extensions": "cd packages/easy-email-extensions && pnpm run test",
+    "test:editor": "node --test scripts/editor-regressions.test.cjs",
     "check:react-bundles": "node scripts/check-react-bundles.mjs",
     "translate": "ts-node scripts/translate.ts",
     "lint": "lerna exec -- pnpm run format"

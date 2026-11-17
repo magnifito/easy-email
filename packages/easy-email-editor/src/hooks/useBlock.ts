@@ -114,7 +114,11 @@ export function useBlock() {
   );
 
   const moveBlock = useCallback(
-    (sourceIdx: string, destinationIdx: string) => {
+    (
+      sourceIdx: string,
+      destinationIdx: string,
+      options: { destinationIsInsertion?: boolean } = {}
+    ) => {
       if (sourceIdx === destinationIdx) return null;
 
       let nextFocusIdx: string;
@@ -148,7 +152,11 @@ export function useBlock() {
 
       const positionIndex = getIndexByIdx(destinationIdx);
       if (sourceParent === destinationParent) {
-        destinationParent.children.splice(positionIndex, 0, removed);
+        const adjustedPosition =
+          options.destinationIsInsertion && sourceIndex < positionIndex
+            ? positionIndex - 1
+            : positionIndex;
+        destinationParent.children.splice(adjustedPosition, 0, removed);
 
         nextFocusIdx =
           destinationParentIdx +
@@ -227,7 +235,6 @@ export function useBlock() {
     [change, getState, setFocusIdx]
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setValueByIdx = useCallback(
     debounce(<T extends IBlockData>(idx: string, newVal: T) => {
       change(idx, {
@@ -244,7 +251,6 @@ export function useBlock() {
     [values]
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setFocusBlock = useCallback(
     debounce((val) => {
       change(focusIdx, { ...val });
@@ -252,7 +258,6 @@ export function useBlock() {
     [focusBlock, focusIdx, change]
   );
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setFocusBlockValue = useCallback(
     debounce((val) => {
       if (!focusBlock) return;

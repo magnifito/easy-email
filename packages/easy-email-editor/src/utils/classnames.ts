@@ -1,4 +1,3 @@
 
-export function classnames(...rest: any[]) {
-  return rest.filter(item => typeof item === 'string').join(' ');
-}
+export { classnames } from '@puralex/easy-email-core';
+export type { ClassNameValue } from '@puralex/easy-email-core';

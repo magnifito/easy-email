@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Page from '@demo/components/Page';
 import store from '@demo/store';
 import '@demo/styles/common.scss';
-import Home from '@demo/pages/Home';
 
+const Home = React.lazy(() => import('@demo/pages/Home'));
 const Editor = React.lazy(() => import('@demo/pages/Editor'));
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
             </div>
           }
         >
-          <Router>
+          <BrowserRouter>
             <Routes>
               <Route
                 path='/'
@@ -50,7 +50,7 @@ function App() {
                 element={<Editor />}
               />
             </Routes>
-          </Router>
+          </BrowserRouter>
         </Suspense>
       </Page>
     </Provider>
